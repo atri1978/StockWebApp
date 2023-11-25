@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+
+{%block title %} Stock {%endblock%}
+
+{%block content %}
+
+<div id="create-section">
+    
+    <h2 style="text-align: center; padding-left: 40px;font-size: 35px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        Enter stock symbol and number of shares to trade!!
+    </h2>
+
+<form id="create-form" method="post">
+    {{form.hidden_tag()}}
+
+    <table align="center">
+    {%for field in form
+        if field.widget.input_type != 'hidden' %}    
+        <tr>
+        <p>
+            <td align="left" id="form-td">{{field.label}}</td>
+            <td align="left" id="form-td">{{field}}</td>    
+            {%for error in field.errors%}
+            {{error}}
+            {%endfor%}
+    
+        </p>
+        </tr>
+    {%endfor%}
+    </table>
+    
+    <button class="btn btn-primary btn-lg" type="submit" id="sellshares-button" style="margin-top: 15px;"> Sell </button>
+    </form>
+
+    
+    </div>
+
+    <div style="margin-bottom: 115px;"></div>
+
+{%endblock%}

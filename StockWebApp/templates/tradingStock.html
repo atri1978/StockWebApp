@@ -1,0 +1,97 @@
+{%extends 'base.html' %}
+
+{%block title %} Stock {%endblock%}
+
+{%block content %}
+
+
+
+
+ 
+<div id="dayAnalysis">
+
+    <table id="dayAnalysis">
+        <tr>
+            <th> <h2 id="stockH2"> Todays stock analysis</h2> </th>
+        </tr>
+
+        <tr>
+            <td> <h2 id="stockH3">Stock Symbol: {{stockSymbol}}</h2></td>
+        </tr>
+        <tr>
+            <td><h2 id="stockH3">Current Max value for the stock ${{dfMax}}</h2></td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3">Current Min value for the stock ${{dfMin}}</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3">Percent of change since the intial value of the day {{dfPChange}}%</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3"> Current value is ${{dfCurrent}}</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3"> Initial value was ${{dfInitial}}</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h4 id="stockH3">Interactive graph</h4>
+            </td>
+        </tr>
+    </table>
+
+
+    <table id="weekAnalysis">
+        <tr>
+            <th> <h2 id="stockH2"> Week stock analysis</h2> </th>
+        </tr>
+
+        <tr>
+            <td> <h2 id="stockH3">Stock Symbol: {{stockSymbol}}</h2></td>
+        </tr>
+        <tr>
+            <td><h2 id="stockH3"> Week's Max value for the stock ${{weekdfMax}}</h2></td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3">Week's Min value for the stock ${{weekdfMin}}</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3">Percent of change since the intial value of the week {{weekdfPChange}}%</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3"> Current value is ${{dfCurrent}}</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h2 id="stockH3"> Initial value of the week was ${{weekdfInitial}} </h2>
+            </td>
+        </tr>
+        <tr>
+            <td>    <h3 id="stockH3">Interactive graph</h3>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<div id="stockNews">
+
+
+    <h1>News and updates on stock</h1>
+
+    {%for article in news%}
+    <a href=""  id="articleLocation" style="padding-bottom: 2px;"><h3 id="article"></h3> {{article}}</h3> </a>
+
+
+    {%endfor%}
+
+</div>
+
+
+
+{%endblock%}

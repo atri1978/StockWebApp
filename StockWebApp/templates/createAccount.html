@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+
+{%block title %} Create Account {%endblock%}
+
+{%block content %}
+
+
+
+<div id="create-section">
+    <h2 style="text-align: center; padding-left: 40px;font-size: 25px; margin-bottom: -20px;">Register
+        <span style="font-size:small; padding-left: 185px;font-weight: bolder;"> or <a href="/login">log in</a> </span>
+    </h2>
+
+<form id="create-form" method="post">
+    {{form.hidden_tag()}}
+
+    <table align="center">
+    {%for field in form
+        if field.widget.input_type != 'hidden' %}    
+        <tr>
+        <p>
+            <td align="left" id="form-td">{{field.label}}</td>
+            <td align="left" id="form-td">{{field}}</td>
+    
+            {%for error in field.errors%}
+            {{error}}
+            {%endfor%}
+    
+        </p>
+        </tr>
+    {%endfor%}
+    </table>
+    
+    <button class="btn" type="submit" id="login-button">Sign In</button>
+    </form>
+
+    <button id="return-button"> < Return </button>
+
+</div>
+{%endblock%}

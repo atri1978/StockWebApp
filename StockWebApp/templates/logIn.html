@@ -1,0 +1,36 @@
+{%extends 'base.html' %}
+
+{%block title %} Log In {%endblock%}
+
+{%block content %}
+
+<div id="login-section">
+<h2 style="text-align: center; padding-left: 40px;font-size: 25px; margin-bottom: -20px;">Log In
+    <span style="font-size:small; padding-left: 85px;font-weight: bolder;"> or <a href="/createAccount">create an account</a> </span>
+</h2>
+
+<form id="logIn-form" method="post">
+{{form.hidden_tag()}}
+
+{%for field in form
+    if field.widget.input_type != 'hidden' %}
+
+    <p>
+        {{field.label}}
+        {{field}}
+
+        {%for error in field.errors%}
+        {{error}}
+        {%endfor%}
+
+    </p>
+{%endfor%}
+
+<button class="btn" type="submit" id="login-button">Sign In</button>
+</form>
+
+
+<button id="return-button"> < Return </button>
+
+</div>
+{%endblock%}

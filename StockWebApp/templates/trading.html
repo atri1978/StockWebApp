@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+
+{%block title %} Trading {%endblock%}
+
+{%block content %}
+
+
+
+<div id="create-section">
+    <h2 style="text-align: center; padding-left: 40px;font-size: 25px; margin-bottom: -20px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        Enter stock symbol to see analysis
+    </h2>
+
+<form id="create-form" method="post">
+    {{form.hidden_tag()}}
+
+    <table align="center">
+    {%for field in form
+        if field.widget.input_type != 'hidden' %}    
+        <tr>
+        <p>
+            <td align="left" id="form-td">{{field.label}}</td>
+            <td align="left" id="form-td">{{field}}</td>
+    
+            {%for error in field.errors%}
+            {{error}}
+            {%endfor%}
+    
+        </p>
+        </tr>
+    {%endfor%}
+    </table>
+    
+    <button class="btn" type="submit" id="trade-button">Begin</button>
+    </form>
+
+    <button class="trading" id="return-button"> < Return </button>
+
+</div>
+{%endblock%}

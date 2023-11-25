@@ -1,0 +1,58 @@
+{%extends 'base.html' %}
+
+{%block title %} Stock {%endblock%}
+
+{%block content %}
+
+<div id="create-section" style="
+margin-top: 20px; 
+height: 10%;
+width: 100%;
+margin-bottom: 0px;
+padding-bottom: 50%;
+background-image:url(https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJhZGluZ3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80);
+background-repeat: no-repeat;
+background-position: 50%;
+background-size: 100%;
+background-blend-mode: lighten;">
+    
+    <h2 style="text-align: center; padding-left: 40px;
+    font-size: 65px; 
+    color: aliceblue;
+    margin-top: -150px;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        Welcome to the Trading Page
+    </h2>
+    <button class="btn btn-primary btn-lg" 
+    type="submit" id="buyshares-button" 
+    style="text-align: center;
+    position: relative;
+    left: 5%;
+    margin-top: 505px;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 45px;
+    margin-bottom: 35px;"> Buy </button>
+    
+    <button class="btn btn-primary btn-lg" 
+    type="submit" id="sellshares-button" 
+    style="text-align: center;
+    position: relative;
+    left: 7%;
+    margin-top: 494px;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 45px;
+    margin-bottom: 25px;"> Sell </button>
+</div>
+
+<div style="background-color: white">
+    </div>
+
+{%endblock%}

@@ -1,0 +1,274 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    
+
+    <link rel="stylesheet" href="/static/design.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/static/ui.js" async></script>
+
+    
+
+</head>
+<body style="background-color: rgb(240, 229, 229);">
+    <nav id="navbar">
+       
+        <a id="nav-left" href="/portfolio" style="text-decoration: none;">Portfolio</a>
+        <a id="nav-left" href="/trading" style="text-decoration: none;">Trading</a>
+        <a id="nav-left" href="/stock" style="text-decoration: none;" >Stock Market</a> 
+        <a id="nav-center"  href="/" style="text-decoration: none;">StockSim</a>   
+        {%if not current_user.is_authenticated%}
+        <button id="login-button-nav" class="button">Log In</button>   
+
+        {%endif%}
+          
+
+        {%if current_user.is_authenticated%}
+        <button id="login-button-nav" class="button" style="display: none;">Log In</button>   
+        <button id="logout-button-nav" class="button"> Log Out</button>
+
+        {%endif%}   
+</nav>
+    
+<style>
+    .carousel-item{
+        height: 42rem;
+       
+        background: rgba(255, 255, 255, 0.356);
+        margin-top: 3%;
+        color: black;
+        position: relative;
+        
+        
+    }
+    .container{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 50px;
+    }
+    .stock-details{
+     position: relative;
+     height: 13rem;
+     left: 80%;
+     width: 18%;
+     bottom: 69%;
+     background: rgba(255, 255, 255, 0.356);
+     margin-bottom: -5%;
+    
+    }
+
+    #myCarousel{
+        width: 75%;
+        margin-top: 0.34%;
+        margin-left: 40px;
+        
+    }
+
+   
+</style>    
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" style="background-color: black;"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="1" style="background-color: black;"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="2" style="background-color: black;"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="container">
+                <table id="stockAnalysis" >
+                    <tr>
+                        <th> <h2 id="stockH5"> Todays stock analysis</h2> </th>
+                    </tr>
+            
+                    <tr>
+                        <td> <h2 id="stockH3">Stock Symbol: {{stock1}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td><h2 id="stockH3">Current Max value for the stock ${{dfMax1}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td> <h2 id="stockH3" >Current Min value for the stock ${{dfMin1}}</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>    <h2 id="stockH3">Percent of change since the intial value of the day {{dfPChange1}}%</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>    <h4 id="stockH3">Interactive graph</h4>
+                        </td>
+                    </tr>
+                </table>
+                
+                
+                <table id="stockAnalysis2" >
+                    
+                    <tr>
+                        <th> <h2 id="stockH5"> Todays news on stock</h2> </th>
+                    </tr>
+                    {%for article in news1%}
+                    <tr>
+                        <td> <h2 id="stockH3">{{article}}</h2></td>
+                    </tr>
+                    {%endfor%}
+                </table>
+                <h1>{{stock1}}</h1>
+                
+
+            </div>
+        </div>
+        <div class="carousel-item ">
+            <div class="container">
+                
+                <table id="stockAnalysis" >
+                    <tr>
+                        <th> <h2 id="stockH5"> Todays stock analysis</h2> </th>
+                    </tr>
+            
+                    <tr>
+                        <td> <h2 id="stockH3">Stock Symbol: {{stock2}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td><h2 id="stockH3">Current Max value for the stock ${{dfMax2}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td>    <h2 id="stockH3">Current Min value for the stock ${{dfMin2}}</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>    <h2 id="stockH3">Percent of change since the intial value of the day {{dfPChange2}}%</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>    <h4 id="stockH3">Interactive graph</h4>
+                        </td>
+                    </tr>
+                </table>
+                
+                
+
+                <table id="stockAnalysis2" >
+                    
+                    <tr>
+                        <th> <h2 id="stockH5"> Todays news on stock</h2> </th>
+                    </tr>
+                    {%for article in news2%}
+                    <tr>
+                        <td> <h2 id="stockH3">{{article}}</h2></td>
+                    </tr>
+                    {%endfor%}
+                </table>
+               
+                <h1>{{stock2}}</h1>
+            </div>
+        </div>
+        <div class="carousel-item ">
+            <div class="container">
+                <table id="stockAnalysis" >
+                    <tr>
+                        <th> <h2 id="stockH5"> Todays stock analysis</h2> </th>
+                    </tr>
+                        <td> <h2 id="stockH3">Stock Symbol: {{stock3}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td><h2 id="stockH3">Current Max value for the stock ${{dfMax3}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td>    <h2 id="stockH3">Current Min value for the stock ${{dfMin3}}</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>    <h2 id="stockH3">Percent of change since the intial value of the day {{dfPChange3}}%</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>    <h4 id="stockH3">Interactive graph</h4>
+                        </td>
+                    </tr>
+                </table>
+                
+
+                <table id="stockAnalysis2" >
+                    
+                    <tr>
+                        <th> <h2 id="stockH5"> Todays news on stock</h2> </th>
+                    </tr>
+                    {%for article in news3%}
+                    <tr>
+                        <td> <h2 id="stockH3">{{article}}</h2></td>
+                    </tr>
+                    {%endfor%}
+                </table>
+
+                <h1>{{stock3}}</h1>
+
+               
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="stock-details">
+    <table >
+        <tr>
+            <td>
+                    {%if profit > 0 %}
+                    <h2 id="profit-green">
+                    Total profit: {{profit}}
+                    </h2>
+                    {% else %}
+                    <h2 id="profit-red">
+                        Total profit: {{profit}}
+                    </h2>
+                    {%endif%}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {%if roundedmoney > 100000 %}
+                <h2 id="money-green">
+                Money left: {{roundedmoney}}
+                </h2>
+                {% else %}
+                <h2 id="money-red">
+                    Money left: {{roundedmoney}}
+                </h2>
+                {%endif%}
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <h2 style="font-weight: bolder;">
+                    Total number of stocks owned: {{numStocks}}
+                </h2>
+            </td>
+        </tr>
+    </table>
+</div>    
+  
+      
+
+        <footer id="footer" >
+            
+                <p>Email: rudrashtomar11@gmail.com           
+                </p>
+                <p> Phone: +1(201) - 879  - 4628 </p>
+                <a href="https://www.linkedin.com/in/rudy-tomar/"> Linkedin</a>
+            
+
+        </footer>
+   
+    
+</body>
+</html>
